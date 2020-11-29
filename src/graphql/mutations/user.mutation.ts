@@ -34,7 +34,7 @@ const UserMutation = new GraphQLObjectType({
         id: { type: GraphQLID },
       },
       resolve(_, { id }, ctx) {
-        return ctx.db.User.findByIdAndRemove(id);
+        return ctx.koa.db.User.findByIdAndRemove(id);
       },
     },
     updateUserById: {
@@ -51,7 +51,7 @@ const UserMutation = new GraphQLObjectType({
         isLogged: { type: GraphQLBoolean },
       },
       resolve(_, { id, ...args }, ctx) {
-        return ctx.db.User.findByIdAndUpdate(id, { ...args });
+        return ctx.koa.db.User.findByIdAndUpdate(id, { ...args });
       },
     },
   },
