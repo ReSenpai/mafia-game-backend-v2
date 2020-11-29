@@ -1,12 +1,20 @@
+
 import { Schema } from 'mongoose';
 
 const UserSchema: Schema = new Schema(
   {
     name: String,
-    login: String,
-    password: String,
+    login: {
+      type: String,
+      required: true
+    },
+    password: {
+      type: String,
+      required: true
+    },
     isAdmin: Boolean,
     isLogged: Boolean,
+    createdAt: String,
   },
   {
     timestamps: true,
