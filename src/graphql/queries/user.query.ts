@@ -28,6 +28,16 @@ const UserQuery: GraphQLObjectType = new GraphQLObjectType({
         return ctx.koa.db.User.findById(id);
       },
     },
+    loginUser: {
+      description: 'Returns a `User` where `User.login and User.password` in database.',
+      type: UserType,
+      args: { 
+        login: { type: GraphQLString },
+        password: { type: GraphQLString }},
+      resolve(_, { login, password }, ctx) {
+        return ctx.koa.db.User.findOne({ login, password });
+      },
+    },
     getUserByName: {
       description: 'Returns a `User` where `User.name = name` in database.',
       type: UserType,
