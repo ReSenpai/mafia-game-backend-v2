@@ -26,6 +26,17 @@ const UserMutation = new GraphQLObjectType({
         return ctx.koa.db.User(args).save();
       },
     },
+    loginUser: {
+      description: 'Returns a `User` where `User.login and User.password` in database.',
+      type: UserType,
+      args: {
+        login: { type: GraphQLString },
+        password: { type: GraphQLString },
+      },
+      resolve(_, { login, password }, ctx) {
+        return ctx.koa.db.User.findOne({ login, password });
+      },
+    },
     deleteUserById: {
       description:
         'Deletes `User` document from database where `User.id = id`.',
