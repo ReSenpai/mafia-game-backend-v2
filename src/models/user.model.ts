@@ -12,6 +12,7 @@ const UserSchema: Schema = new Schema(
       type: String,
       required: true
     },
+    avatar: String,
     isAdmin: Boolean,
     isLogged: Boolean,
     createdAt: String,
